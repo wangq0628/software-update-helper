@@ -48,7 +48,7 @@ jobs:
           if (Test-Path $out) { Remove-Item -Recurse -Force $out }
           New-Item -ItemType Directory -Force -Path $out | Out-Null
           Copy-Item "$src\*" -Destination $out -Recurse -Force
-          Copy-Item "data" -Destination "$out\data" -Recurse -Force
+          Copy-Item "data\catalog.json" -Destination "$out\data\catalog.json" -Force; Copy-Item "data\config.json" -Destination "$out\data\config.json" -Force
           Copy-Item "使用说明.txt" -Destination $out -Force
           Compress-Archive -Path "$out\*" -DestinationPath "software_update_helper_windows.zip" -Force
           Write-Output ("Packaged, size {0:N1} MB" -f ((Get-Item "software_update_helper_windows.zip").Length / 1MB))
