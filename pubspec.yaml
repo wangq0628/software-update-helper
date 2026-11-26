@@ -1,0 +1,20 @@
+name: software_update_helper
+description: Windows 专用绿色软件更新助手 — 仅从官方源检查并下载更新。
+publish_to: none
+version: 2.0.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ffi: ^2.1.0
+  crypto: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

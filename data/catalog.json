@@ -1,0 +1,464 @@
+[
+  {
+    "id": "7zip",
+    "name": "7-Zip",
+    "keywords": [
+      "7-Zip",
+      "7zip"
+    ],
+    "source_type": "github",
+    "version_url": "https://api.github.com/repos/ip7z/7zip/releases/latest",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "^7z[0-9]{4}-x64\\.exe$",
+    "tag_prefix": "",
+    "official_hosts": [
+      "7-zip.org",
+      "github.com",
+      "githubusercontent.com"
+    ],
+    "name_template": "7z{version_compact}-x64.exe",
+    "official_page": "https://www.7-zip.org/download.html",
+    "notes": "官网 7-zip.org 明确指向开发者官方仓库 ip7z/7zip 的 releases，已验证 26.06",
+    "name_regex": "7-?zip|7z[0-9]{3,4}",
+    "exclude_regex": ""
+  },
+  {
+    "id": "winscp",
+    "name": "WinSCP",
+    "keywords": [
+      "WinSCP",
+      "winscp"
+    ],
+    "source_type": "html",
+    "version_url": "https://winscp.net/eng/downloads.php",
+    "download_regex": "href=\"(/download/WinSCP-[0-9.]+-Portable\\.zip/download)\"",
+    "version_regex": "WinSCP-([0-9.]+)-Portable\\.zip/download",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "winscp.net"
+    ],
+    "name_template": "WinSCP-{version}-Portable.zip",
+    "official_page": "https://winscp.net/eng/downloads.php",
+    "notes": "官网下载页直接提供 Portable 官方直链，已验证 6.7.1",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "firefox",
+    "name": "Mozilla Firefox",
+    "keywords": [
+      "Firefox",
+      "火狐",
+      "firefox"
+    ],
+    "source_type": "json",
+    "version_url": "https://product-details.mozilla.org/1.0/firefox_versions.json",
+    "download_regex": "",
+    "version_regex": "\"LATEST_FIREFOX_VERSION\"\\s*:\\s*\"([^\"]+)\"",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "mozilla.org",
+      "mozilla.net"
+    ],
+    "download_url_template": "https://download.mozilla.org/?product=firefox-latest-ssl&os=win64&lang=zh-CN",
+    "name_template": "Firefox Setup {version} win64.exe",
+    "official_page": "https://www.mozilla.org/zh-CN/firefox/new/",
+    "notes": "Mozilla 官方产品版本 API，已验证 160.0.1；下载由 download.mozilla.org 官方分发",
+    "exclude_regex": "tampermonkey|backup|userscript|脚本|greasyfork",
+    "name_regex": ""
+  },
+  {
+    "id": "qbittorrent",
+    "name": "qBittorrent",
+    "keywords": [
+      "qBittorrent",
+      "qbittorrent"
+    ],
+    "source_type": "github",
+    "version_url": "https://api.github.com/repos/qbittorrent/qBittorrent/releases/latest",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "^qbittorrent_[0-9.]+_x64_setup\\.exe$",
+    "tag_prefix": "release-",
+    "official_hosts": [
+      "github.com",
+      "githubusercontent.com",
+      "qbittorrent.org"
+    ],
+    "name_template": "qbittorrent_{version}_x64_setup.exe",
+    "official_page": "https://www.qbittorrent.org/download.php",
+    "notes": "开发者官方仓库 qbittorrent/qBittorrent 的 releases，已验证 5.3.0",
+    "exclude_regex": "enhanced|增强版|EE",
+    "name_regex": ""
+  },
+  {
+    "id": "motrix",
+    "name": "Motrix",
+    "keywords": [
+      "Motrix",
+      "motrix"
+    ],
+    "source_type": "github",
+    "version_url": "https://api.github.com/repos/agalwood/Motrix/releases/latest",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "^Motrix-[0-9.]+-win\\.zip$",
+    "tag_prefix": "v",
+    "official_hosts": [
+      "github.com",
+      "githubusercontent.com",
+      "motrix.app"
+    ],
+    "name_template": "Motrix-{version}-win.zip",
+    "official_page": "https://motrix.app/download",
+    "notes": "开发者官方仓库 agalwood/Motrix，选取 Windows 便携 zip，已验证 2.4.5",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "rufus",
+    "name": "Rufus",
+    "keywords": [
+      "rufus",
+      "Rufus"
+    ],
+    "source_type": "github",
+    "version_url": "https://api.github.com/repos/pbatard/rufus/releases/latest",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "^rufus-[0-9.]+p\\.exe$",
+    "tag_prefix": "v",
+    "official_hosts": [
+      "github.com",
+      "githubusercontent.com",
+      "rufus.ie"
+    ],
+    "name_template": "rufus-{version}p.exe",
+    "official_page": "https://rufus.ie/zh/",
+    "notes": "开发者官方仓库 pbatard/rufus，p 结尾为便携版，已验证 4.16",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "cpuz",
+    "name": "CPU-Z",
+    "keywords": [
+      "CPU-Z",
+      "cpu-z",
+      "CPUZ"
+    ],
+    "source_type": "html",
+    "version_url": "https://www.cpuid.com/softwares/cpu-z.html",
+    "download_regex": "href=\"(/downloads/cpu-z/cpu-z_[0-9.]+-en\\.zip)\"",
+    "version_regex": "CPU-Z\\s+([0-9.]+)",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "cpuid.com"
+    ],
+    "name_template": "cpu-z_{version}-en.zip",
+    "official_page": "https://www.cpuid.com/softwares/cpu-z.html",
+    "notes": "CPUID 官网下载页，已验证 3.02；取英文便携 zip",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "hwinfo",
+    "name": "HWiNFO",
+    "keywords": [
+      "HWiNFO",
+      "HWINFO",
+      "hwinfo"
+    ],
+    "source_type": "html",
+    "version_url": "https://www.hwinfo.com/download/",
+    "download_regex": "href=\"(https://www\\.hwinfo\\.com/files/hwi_[0-9]+\\.zip)\"",
+    "version_regex": "Version\\s+([0-9.]+)",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "hwinfo.com"
+    ],
+    "name_template": "hwi{version_compact}.zip",
+    "official_page": "https://www.hwinfo.com/download/",
+    "notes": "HWiNFO 官网下载页 Local(U.S.) 官方直链（便携版），已验证 8.60",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "crystaldiskinfo",
+    "name": "CrystalDiskInfo",
+    "keywords": [
+      "CrystalDiskInfo"
+    ],
+    "source_type": "html",
+    "version_url": "https://crystalmark.info/en/download/",
+    "download_regex": "",
+    "version_regex": "CrystalDiskInfo\\s+([0-9.]+)",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "crystalmark.info",
+      "sourceforge.net"
+    ],
+    "download_url_template": "https://sourceforge.net/projects/crystaldiskinfo/files/{version}/CrystalDiskInfo{version_underscore}.zip/download",
+    "name_template": "CrystalDiskInfo{version_underscore}.zip",
+    "official_page": "https://crystalmark.info/en/download/",
+    "notes": "CrystalMark 官网指向的官方 SourceForge 项目，已验证 9.9.5",
+    "exclude_regex": "mark",
+    "name_regex": ""
+  },
+  {
+    "id": "crystaldiskmark",
+    "name": "CrystalDiskMark",
+    "keywords": [
+      "CrystalDiskMark"
+    ],
+    "source_type": "html",
+    "version_url": "https://crystalmark.info/en/download/",
+    "download_regex": "",
+    "version_regex": "CrystalDiskMark\\s+([0-9.]+)",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "crystalmark.info",
+      "sourceforge.net"
+    ],
+    "download_url_template": "https://sourceforge.net/projects/crystaldiskmark/files/{version}/CrystalDiskMark{version_underscore}.zip/download",
+    "name_template": "CrystalDiskMark{version_underscore}.zip",
+    "official_page": "https://crystalmark.info/en/download/",
+    "notes": "CrystalMark 官网指向的官方 SourceForge 项目，已验证 9.0.3",
+    "name_regex": "CrystalDiskMark|CDM[ _-]?[0-9]",
+    "exclude_regex": ""
+  },
+  {
+    "id": "winrar",
+    "name": "WinRAR",
+    "keywords": [
+      "WinRAR",
+      "winrar"
+    ],
+    "source_type": "html",
+    "version_url": "https://www.rarlab.com/download.htm",
+    "download_regex": "href=\"(/rar/winrar-x64-[0-9]+\\.exe)\"",
+    "version_regex": "WinRAR\\s+64-bit\\s+([0-9.]+)\\s*</b>",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "rarlab.com"
+    ],
+    "name_template": "winrar-x64-{version_compact}.exe",
+    "official_page": "https://www.rarlab.com/download.htm",
+    "notes": "RARLAB 官网稳定版 64 位安装包，已验证 7.23（跳过 beta 版）",
+    "exclude_regex": "theme|主题|skin|皮肤",
+    "name_regex": ""
+  },
+  {
+    "id": "vlc",
+    "name": "VLC media player",
+    "keywords": [
+      "VLC",
+      "vlc"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "videolan.org"
+    ],
+    "name_template": "",
+    "official_page": "https://www.videolan.org/vlc/",
+    "notes": "官网版本与直链分离，需人工确认；未找到新版",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "totalcommander",
+    "name": "Total Commander",
+    "keywords": [
+      "Total Commander",
+      "totalcmd",
+      "tcm"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "ghisler.com"
+    ],
+    "name_template": "",
+    "official_page": "https://www.ghisler.com/download.htm",
+    "notes": "官网需先选择版本与语言，无可核查的官方直链；未找到新版",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "recuva",
+    "name": "Recuva",
+    "keywords": [
+      "Recuva",
+      "recuva"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "ccleaner.com",
+      "piriform.com"
+    ],
+    "name_template": "",
+    "official_page": "https://www.ccleaner.com/recuva/download",
+    "notes": "官网只提供在线安装器，无可核查的官方离线直链；未找到新版",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "idm",
+    "name": "Internet Download Manager",
+    "keywords": [
+      "IDM",
+      "Internet Download Manager"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "internetdownloadmanager.com"
+    ],
+    "name_template": "",
+    "official_page": "https://www.internetdownloadmanager.com/download.html",
+    "notes": "官网未提供可自动核查的版本接口；未找到新版",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "bambustudio",
+    "name": "Bambu Studio",
+    "keywords": [
+      "Bambu Studio",
+      "Bambu_Studio",
+      "bambu"
+    ],
+    "source_type": "github",
+    "version_url": "https://api.github.com/repos/bambulab/BambuStudio/releases/latest",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "^Bambu_Studio_win-v[0-9.]+-[0-9]+\\.zip$",
+    "tag_prefix": "v",
+    "official_hosts": [
+      "github.com",
+      "githubusercontent.com",
+      "bambulab.com"
+    ],
+    "name_template": "Bambu_Studio_win-v{version}.zip",
+    "official_page": "https://bambulab.com/en/download",
+    "notes": "Bambu Lab 官方仓库 bambulab/BambuStudio 的 releases，取 Windows 便携 zip，已验证 02.09.01.70",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "qq",
+    "name": "腾讯 QQ",
+    "keywords": [
+      "腾讯QQ"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "qq.com",
+      "tencent.com"
+    ],
+    "name_template": "",
+    "official_page": "https://im.qq.com/pcqq/index.shtml",
+    "notes": "官网未提供可自动核查的版本接口与离线直链；未找到新版",
+    "name_regex": "^QQ[ _-]?[0-9]|QQSetup|QQ[ _-]?v?[0-9]",
+    "exclude_regex": "QQPinyin|QQ拼音|QQ音乐|QQPC|QQPhone|表情|TIM"
+  },
+  {
+    "id": "wechat",
+    "name": "微信 Windows 版",
+    "keywords": [
+      "WeChatSetup",
+      "微信Setup"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "weixin.qq.com",
+      "tencent.com"
+    ],
+    "name_template": "",
+    "official_page": "https://pc.weixin.qq.com/",
+    "notes": "官网未提供可自动核查的版本接口；未找到新版",
+    "exclude_regex": "双开|输入法|备份",
+    "name_regex": ""
+  },
+  {
+    "id": "anydesk",
+    "name": "AnyDesk",
+    "keywords": [
+      "AnyDesk",
+      "anydesk"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "anydesk.com"
+    ],
+    "name_template": "",
+    "official_page": "https://anydesk.com/en/downloads",
+    "notes": "官网提供直链但无可自动核查的稳定版本接口；未找到新版",
+    "name_regex": "",
+    "exclude_regex": ""
+  },
+  {
+    "id": "qbittorrent_ee",
+    "name": "qBittorrent Enhanced Edition",
+    "keywords": [
+      "qBittorrent Enhanced",
+      "qBittorrentEE"
+    ],
+    "source_type": "unavailable",
+    "version_url": "",
+    "download_regex": "",
+    "version_regex": "",
+    "asset_regex": "",
+    "tag_prefix": "",
+    "official_hosts": [
+      "github.com",
+      "githubusercontent.com"
+    ],
+    "name_template": "",
+    "official_page": "https://github.com/c0re100/qBittorrent-Enhanced-Edition",
+    "notes": "增强版为第三方分支，与官方 qBittorrent 不同；为避免误装非官方版本，未找到新版",
+    "name_regex": "",
+    "exclude_regex": ""
+  }
+]

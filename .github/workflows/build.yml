@@ -1,0 +1,77 @@
+name: Build Windows Portable
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter (pinned to 3.50.1)
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.50.1'
+          cache: true
+
+      - name: Enable Windows desktop
+        run: flutter config --enable-windows-desktop
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Build Windows Release
+        run: flutter build windows --release
+
+      - name: Package portable folder
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $OutputEncoding = [Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
+          $src = "build\windows\x64\runner\Release"
+          if (-not (Test-Path "$src\software_update_helper.exe")) {
+            throw "Build output not found: $src\software_update_helper.exe"
+          }
+          $out = "release"
+          if (Test-Path $out) { Remove-Item -Recurse -Force $out }
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          Copy-Item "$src\*" -Destination $out -Recurse -Force
+          Copy-Item "data" -Destination "$out\data" -Recurse -Force
+          Copy-Item "使用说明.txt" -Destination $out -Force
+          Compress-Archive -Path "$out\*" -DestinationPath "software_update_helper_windows.zip" -Force
+          Write-Output ("Packaged, size {0:N1} MB" -f ((Get-Item "software_update_helper_windows.zip").Length / 1MB))
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: software_update_helper_windows
+          path: software_update_helper_windows.zip
+          retention-days: 30
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v2.0.0
+          name: Software Update Helper v2.0.0 (Windows Portable)
+          body: |
+            Flutter-based Windows portable software update helper.
+
+            Download software_update_helper_windows.zip, extract it, and copy the whole folder
+            to any Windows PC. No Python / Flutter / runtime installation needed.
+
+            Official sources only: domain allowlist, SHA256 verification, proxy support,
+            old versions moved to Recycle Bin.
+          files: software_update_helper_windows.zip
+          generate_release_notes: false

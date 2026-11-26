@@ -1,0 +1,73 @@
+软件更新助手 v2.0 — Flutter / Windows 专用版
+================================================
+
+【这是什么】
+用 Flutter 重写的 Windows 桌面程序，功能与之前的绿色版一致：
+扫描分类软件目录 → 查询官方源 → 显示版本差异 → 勾选下载官方新版 → 可选把旧版移入回收站。
+界面是原生 Windows 桌面窗口，不再通过浏览器打开。
+
+【当前状态】
+Flutter SDK 已装在 D:\flutter。
+Dart 代码已通过静态分析（flutter analyze 无错误）。
+编译 EXE 还差 Visual Studio 的 C++ 桌面开发工具链，按下面第 1 步安装后即可出包。
+
+
+【第 1 步：安装编译工具链（只需一次，需管理员权限）】
+以管理员身份打开 PowerShell 或命令提示符，执行：
+
+winget install Microsoft.VisualStudio.2022.BuildTools --override "--wait --passive --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
+
+安装完成后重启电脑。也可以手动安装 Visual Studio 2022 Build Tools，
+勾选工作负载“使用 C++ 的桌面开发”（Desktop development with C++）。
+
+验证：打开命令提示符执行
+  D:\flutter\bin\flutter.bat doctor
+确认 “Visual Studio - develop Windows apps” 前面是勾选状态。
+
+
+【第 2 步：一键构建】
+双击本目录下的 一键构建.bat。它会依次执行：
+  1. flutter pub get
+  2. flutter build windows --release
+  3. 把编译产物、data 目录、本说明打包到 release 文件夹
+
+构建完成后，整个 release 文件夹就是绿色软件，可复制到任意 Windows 电脑使用，
+不需要安装 Flutter，也不需要安装 Python。
+
+
+【程序怎么用】
+1. 运行 release\software_update_helper.exe
+2. 确认“扫描目录”（默认 D:\应用程序 和 D:\驱动，多个用分号分隔），点“保存设置”。
+3. 点“① 扫描并检查官方新版”。表格会列出本地版本、官方版本、状态和官方地址。
+4. 勾选“更新”列决定下载哪些；“删旧版”列决定下载成功后是否把旧版本移入回收站。
+5. 点“② 下载选中（官方源）”，确认后开始。
+   新文件保存到旧版本所在文件夹，文件名按官网习惯并带版本号，同时生成 .sha256.txt。
+6. “未找到新版”表示该软件没有可核查的官方直链或没有新版本，程序不会下载任何东西。
+
+
+【官方版本保障】
+- catalog.json 中每个软件都有 official_hosts 域名白名单。
+- 下载前校验域名，下载中的每一次跳转都重新校验，跳到非官方域名立即中止。
+- GitHub 官方发布资产带 SHA256 摘要时，下载后自动比对，不一致就丢弃。
+- 第三方分支（如 qBittorrent Enhanced Edition）单独标注，不会冒充官方版。
+- 每一行都有“官网核查”链接，可人工对照。
+
+
+【代理】
+设置里可选“不使用代理 / 使用系统代理 / 自定义代理”，自定义填 http://127.0.0.1:7890 这类地址。
+GitHub API 匿名访问有限额，可填 GitHub Token 提高限额（不填也能用）。
+
+
+【目录结构】
+  lib\main.dart      桌面界面
+  lib\core.dart      扫描、版本比较、官方源查询、代理下载、SHA256、回收站、报告
+  lib\models.dart    配置与数据结构
+  data\catalog.json  官方源目录（可自行增补）
+  data\config.json   个人设置
+  windows\           Flutter 生成的 Windows 工程
+  一键构建.bat        构建并打包绿色版
+
+
+【想增加软件】
+按 catalog.json 现有条目格式增加即可。找不到可靠官方直链的标成 "source_type": "unavailable"，
+界面会显示“未找到新版”，不会产生任何下载。
